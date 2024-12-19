@@ -27,6 +27,6 @@ optional: live link
 anything extra that you want to talk about
 
 contributed by
-- Meghna Ravikumar [(your github link)](https://github.com/meghna-ravikumar)
+- [Meghna Ravikumar](https://github.com/meghna-ravikumar)
 
 **[check us out on github](link to the github repo housing the project)**
