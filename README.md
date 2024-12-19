@@ -29,4 +29,4 @@ anything extra that you want to talk about
 contributed by
 - [Meghna Ravikumar](https://github.com/meghna-ravikumar)
 
-**[check us out on github](link to the github repo housing the project)**
+**[check us out on github](https://github.com/meghna-ravikumar/linkode)**
