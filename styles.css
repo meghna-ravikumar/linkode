@@ -1,0 +1,115 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #8A00D4;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    font-size: 1em;
+}
+
+/* Profile Container */
+#profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Profile Card */
+.profileCard {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    justify-content: space-between;
+}
+
+.profileCard img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profileDetails {
+    flex: 1;
+    text-align: left;
+}
+
+.profileDetails h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.profileDetails p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.profileDetails a {
+    color: #8A00D4;
+    text-decoration: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.connectBtn {
+    background-color: #8A00D4;
+    color: white;
+}
+
+.connectBtn:hover {
+    background-color: #9B00E6;
+}
+
+.crashBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+.crashBtn:hover {
+    background-color: #e53935;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #8A00D4;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkode - Login / Sign Up</title>
+    <style>
+        body {
+            background-color: #6a0dad; /* Electric Purple */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #32cd32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .form-container button:hover {
+            background-color: #228b22;
+        }
+
+        .footer {
+            font-size: 1rem;
+            margin-top: 40px;
+        }
+
+        .switch-link {
+            margin-top: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linkode - Login / Sign Up</h1>
+
+        <!-- Login Form -->
+        <div class="form-container" id="loginForm">
+            <h2>Login</h2>
+            <form id="login">
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" class="switch-link" id="showSignup">Sign Up</a></p>
+        </div>
+
+        <!-- Sign Up Form (Initially Hidden) -->
+        <div class="form-container hidden" id="signupForm">
+            <h2>Sign Up</h2>
+            <form id="signup">
+                <input type="text" id="signupName" placeholder="Enter your name" required>
+                <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                <input type="password" id="signupPassword" placeholder="Enter your password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" class="switch-link" id="showLogin">Login</a></p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Linkode. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Handling form switch between Login and Signup
+        const showSignupLink = document.getElementById('showSignup');
+        const showLoginLink = document.getElementById('showLogin');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+        showSignupLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            loginForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+        });
+
+        showLoginLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+
+        // Handling Login Form Submission
+        const loginFormElement = document.getElementById('login');
+        loginFormElement.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Simulate login (In reality, you would use an API call here)
+            if (email === "test@linkode.com" && password === "password123") {
+                alert('Login successful!');
+                window.location.href = "index.html"; // Redirect to the main page (index.html)
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+
+        // Handling Sign Up Form Submission
+        const signupFormElement = document.getElementById('signup');
+        signupFormElement.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Simple validation (check if passwords match)
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Simulate sign up (In reality, you would use an API call here)
+            alert('Account created successfully!');
+            window.location.href = "profile.html"; // Redirect to the profile page (profile.html)
+        });
+    </script>
+</body>
+</html>

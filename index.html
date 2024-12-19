@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkode - Connect with Programmers</title>
+    <style>
+        body {
+            background-color: #6a0dad; /* Electric Purple */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .profile {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+        }
+
+        .profile p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .profile a {
+            color: #6a0dad; /* Electric purple link */
+            text-decoration: none;
+        }
+
+        .profile a:hover {
+            text-decoration: underline;
+        }
+
+        .tech-stack {
+            font-size: 1rem;
+            color: #444;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .connect {
+            background-color: #32cd32; /* Green for Connect */
+        }
+
+        .connect:hover {
+            background-color: #228b22;
+        }
+
+        .crash {
+            background-color: #ff6347; /* Red for Crash */
+        }
+
+        .crash:hover {
+            background-color: #dc143c;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pop-up styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup-content button {
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .popup-content button:hover {
+            background-color: #550f8b;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Linkode!</h1>
+        
+        <div class="profile" id="profile">
+            <p id="bio">Full-stack developer passionate about open-source projects. Love Python and JavaScript.</p>
+            <p><strong>GitHub:</strong> <a id="github-link" href="#">github.com/johndoe</a></p>
+            <div class="tech-stack" id="tech-stack">Tech Stack: Python, JavaScript, Node.js</div>
+            
+            <div class="buttons">
+                <button class="btn connect" id="connectBtn">Connect</button>
+                <button class="btn crash" id="crashBtn">Crash</button>
+            </div>
+        </div>
+
+        <!-- Pop-up for Connect -->
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <p id="popup-message"></p>
+                <button id="closePopup">Close</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Linkode. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample profiles data
+        const profiles = [
+            { 
+                name: "John Doe", 
+                nickname: "Johnny", 
+                bio: "Full-stack developer passionate about open-source projects. Love Python and JavaScript.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/johndoe", 
+                techStack: "Python, JavaScript, Node.js" 
+            },
+            { 
+                name: "Jane Smith", 
+                nickname: "JS Dev", 
+                bio: "Frontend developer specializing in React and UI/UX design.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/janesmith", 
+                techStack: "React, JavaScript, CSS" 
+            },
+            { 
+                name: "Mark Taylor", 
+                nickname: "Marky", 
+                bio: "Backend developer focused on Node.js and database optimization.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/marktaylor", 
+                techStack: "Node.js, MongoDB, Express" 
+            },
+            { 
+                name: "Emily Johnson", 
+                nickname: "DataGirl", 
+                bio: "Machine learning engineer with a focus on data science and AI.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/emilyjohnson", 
+                techStack: "Python, TensorFlow, AI" 
+            },
+            { 
+                name: "Chris Brown", 
+                nickname: "DevChris", 
+                bio: "Mobile app developer working with Flutter and React Native.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/chrisbrown", 
+                techStack: "Flutter, React Native, Dart" 
+            },
+            { 
+                name: "Nina Davis", 
+                nickname: "NinaSec", 
+                bio: "Cybersecurity expert with experience in ethical hacking.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/ninadavis", 
+                techStack: "Kali Linux, Python, Penetration Testing" 
+            },
+            { 
+                name: "Oliver Harris", 
+                nickname: "CloudGuru", 
+                bio: "Cloud solutions architect specializing in AWS and Azure.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/oliverharris", 
+                techStack: "AWS, Azure, Terraform" 
+            },
+            { 
+                name: "Sophia Williams", 
+                nickname: "DataSophia", 
+                bio: "Data analyst with expertise in Python and SQL.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/sophiawilliams", 
+                techStack: "Python, SQL, Pandas" 
+            },
+            { 
+                name: "Ryan Lee", 
+                nickname: "RyanOps", 
+                bio: "DevOps engineer skilled in Kubernetes and Docker.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/ryanlee", 
+                techStack: "Kubernetes, Docker, CI/CD" 
+            },
+            { 
+                name: "Isabella Martinez", 
+                nickname: "GameIsabella", 
+                bio: "Game developer with experience in Unity and C#.", 
+                img: "https://via.placeholder.com/120", 
+                github: "https://github.com/isabellamartinez", 
+                techStack: "Unity, C#, Game Design" 
+            },
+            // You can add more profiles here...
+        ];
+
+        let currentProfileIndex = 0;
+
+        const profileBio = document.getElementById('bio');
+        const profileGithub = document.getElementById('github-link');
+        const profileTechStack = document.getElementById('tech-stack');
+
+        const connectBtn = document.getElementById('connectBtn');
+        const crashBtn = document.getElementById('crashBtn');
+
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popup-message');
+        const closePopup = document.getElementById('closePopup');
+
+        function displayProfile(index) {
+            const profile = profiles[index];
+            profileBio.textContent = profile.bio;
+            profileGithub.href = profile.github;
+            profileGithub.textContent = profile.github;
+            profileTechStack.textContent = `Tech Stack: ${profile.techStack}`;
+        }
+
+        connectBtn.addEventListener('click', function() {
+            popupMessage.textContent = `You connected with ${profiles[currentProfileIndex].nickname}!`;
+            popup.style.display = 'flex'; // Show the popup
+            currentProfileIndex++;
+            if (currentProfileIndex < profiles.length) {
+                displayProfile(currentProfileIndex);
+            } else {
+                alert("No more profiles available.");
+            }
+        });
+
+        crashBtn.addEventListener('click', function() {
+            currentProfileIndex++;
+            if (currentProfileIndex < profiles.length) {
+                displayProfile(currentProfileIndex);
+            } else {
+                alert("No more profiles available.");
+            }
+        });
+
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none'; // Close the popup
+        });
+
+        // Initialize first profile
+        displayProfile(currentProfileIndex);
+    </script>
+</body>
+</html>
