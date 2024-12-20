@@ -38,7 +38,7 @@ To get Linkode up and running, follow these steps:
 4. Run the app locally:  
    `npm start`
   
-5. Open your browser and visit `http://localhost:3000` to access Linkode.
+5. Open your browser and visit `[https://github.com/meghna-ravikumar/linkode/tree/side](https://github.com/meghna-ravikumar/linkode/tree/side)` to access Linkode.
 
 (optional: live link)
 
@@ -54,4 +54,4 @@ We are particularly looking for:
 Contributed by:
 - [Meghna Ravikumar](https://github.com/meghna-ravikumar)
 
-**[Check us out on GitHub](https://github.com/meghna-ravikumar/linkode)**
+**[Check us out on GitHub](https://github.com/meghna-ravikumar/linkode/tree/side)**
